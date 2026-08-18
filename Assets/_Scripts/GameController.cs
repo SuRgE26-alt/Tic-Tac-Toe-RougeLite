@@ -2,20 +2,43 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+[System.Serializable]
+public class Player
+{
+    public Image _panel;
+    public TextMeshProUGUI _text;
+    public Button _chooseSideButton;
+}
+
+[System.Serializable]
+public class PlayerColor
+{
+    public Color _panelColor;
+    public Color _textColor;
+}
+
 public class GameController : MonoBehaviour
 {
+    
     public TextMeshProUGUI[] _buttonList;
     public GameObject _resultPanel;
     public TextMeshProUGUI _resultText;
+    public GameObject _startInfo;
 
     private int _moveCount;
     private string _playerSide;
+
+    public Player _playerX;
+    public Player _playerO;
+    public PlayerColor _activePlayerColor;
+    public PlayerColor _inactivePlayerColor;
 
     private void Awake()
     {
         _resultPanel.SetActive(false);
         SetGameControllerRefOnButtons();
-        _playerSide = "X";
+        SetPlayerColorsInactive();
+        _startInfo.SetActive(true);
     }
 
     void SetGameControllerRefOnButtons()
@@ -24,6 +47,29 @@ public class GameController : MonoBehaviour
         {
             _buttonList[i].GetComponentInParent<GridSpaceButton>().SetGameControllerRef(this);
         }
+    }
+
+    public void SetStartingSide(string startingSide)
+    {
+        _playerSide = startingSide;
+
+        if (_playerSide == "X")
+        {
+            SetPlayerColors(_playerX, _playerO);
+        }
+        else
+        {
+            SetPlayerColors(_playerO, _playerX);
+        }
+
+        StartGame();
+    }
+
+    void StartGame()
+    {
+        SetBoardInteractable(true);
+        SetPlayerSideButtons(false);
+        _startInfo.SetActive(false);
     }
 
     public string GetPlayerSide()
@@ -82,12 +128,22 @@ public class GameController : MonoBehaviour
 
         #endregion
 
-        if(_moveCount >= 9)
+        else if(_moveCount >= 9)
         {
-            GameOver(true);
+            GameOver(true); // Draw check
         }
+        else
+        {
+            ChangeSides(); // Change player sides if no win or draw
+        }
+    }
 
-        ChangeSides();
+    void SetPlayerColors(Player newPlayer, Player oldPlayer)
+    {
+        newPlayer._panel.color = _activePlayerColor._panelColor;
+        newPlayer._text.color = _activePlayerColor._textColor;
+        oldPlayer._panel.color = _inactivePlayerColor._panelColor;
+        oldPlayer._text.color = _inactivePlayerColor._textColor;
     }
 
     void GameOver(bool isDraw)
@@ -97,6 +153,7 @@ public class GameController : MonoBehaviour
         if(isDraw == true)
         {
             SetResultText("It's a Draw!");
+            SetPlayerColorsInactive();
         }
         else
         {
@@ -108,6 +165,15 @@ public class GameController : MonoBehaviour
     void ChangeSides()
     {
         _playerSide = (_playerSide == "X") ? "O" : "X";
+
+        if(_playerSide == "X")
+        {
+            SetPlayerColors(_playerX, _playerO);
+        }
+        else
+        {
+            SetPlayerColors(_playerO, _playerX);
+        }
     }
 
     void SetResultText(string value)
@@ -118,11 +184,12 @@ public class GameController : MonoBehaviour
 
     public void RestartGame()
     {
-        _playerSide = "X";
         _moveCount = 0;
         _resultPanel.SetActive(false);
+        _startInfo.SetActive(true);
 
-        SetBoardInteractable(true);
+        SetPlayerSideButtons(true);
+        SetPlayerColorsInactive();
 
         for (int i = 0; i < _buttonList.Length; i++)
         {
@@ -136,5 +203,19 @@ public class GameController : MonoBehaviour
         {
             _buttonList[i].GetComponentInParent<Button>().interactable = toggle;
         }
+    }
+
+    void SetPlayerSideButtons(bool toggle)
+    {
+        _playerX._chooseSideButton.interactable = toggle;
+        _playerO._chooseSideButton.interactable = toggle;
+    }
+
+    void SetPlayerColorsInactive()
+    {
+        _playerX._panel.color = _inactivePlayerColor._panelColor;
+        _playerX._text.color = _inactivePlayerColor._textColor;
+        _playerO._panel.color = _inactivePlayerColor._panelColor;
+        _playerO._text.color = _inactivePlayerColor._textColor;
     }
 }
