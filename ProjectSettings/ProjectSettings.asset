@@ -696,8 +696,8 @@ PlayerSettings:
   editorAssembliesCompatibilityLevel: 1
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: Tic Tac Toe Upgraded
-  metroPackageVersion: 
+  metroPackageName: TicTacToeUpgraded
+  metroPackageVersion: 1.0.0.0
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
@@ -705,7 +705,7 @@ PlayerSettings:
   metroCertificateNotAfter: 0000000000000000
   metroApplicationDescription: Tic Tac Toe Upgraded
   wsaImages: {}
-  metroTileShortName: 
+  metroTileShortName: Tic Tac Toe Upgraded
   metroTileShowName: 0
   metroMediumTileShowName: 0
   metroLargeTileShowName: 0

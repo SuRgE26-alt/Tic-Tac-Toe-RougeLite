@@ -6,14 +6,50 @@ public class GridSpaceButton : MonoBehaviour
 {
     [SerializeField] private Button _button;
     [SerializeField] private TextMeshProUGUI _buttonText;
+    [SerializeField] private TilesSO _tileProperty;
 
     private GameController _gameController;
 
+    public bool _isFree => _button.interactable;
+
+    void CheckAIInput()
+    {
+        
+    }
+
     public void SetSpace()
     {
-        _buttonText.text = _gameController.GetPlayerSide();
+        if(_gameController._playerMove == true)
+        {
+            ClaimSpace(_gameController.GetPlayerSide());
+        }
+    }
+
+    public void ClaimSpace(string side)
+    {
+        _buttonText.text = side;
         _button.interactable = false;
+        ActivteTile(side);
         _gameController.EndTurn();
+    }
+
+    void ActivteTile(string side)
+    {
+        switch (_tileProperty._tileType)
+        {
+            case TileType.Damage:
+                Debug.Log($"{side} Damage tile activated!");
+                break;
+            case TileType.Shield:
+                Debug.Log($"{side} Shield tile activated!");
+                break;
+            case TileType.Heal:
+                Debug.Log($"{side} Heal tile activated!");
+                break;
+            case TileType.None:
+                Debug.Log($"{side} No special effect.");
+                break;
+        }
     }
 
     public void SetGameControllerRef(GameController controller)
