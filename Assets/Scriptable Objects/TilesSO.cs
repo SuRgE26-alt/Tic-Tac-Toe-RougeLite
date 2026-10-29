@@ -18,4 +18,6 @@ public class TilesSO : ScriptableObject
 {
      public TileType _tileType;
      public Sprite _tileSprite;
+    [Tooltip("Keep this 0 if the tile has no damage")]
+     public float _attackTileDamage;
 }

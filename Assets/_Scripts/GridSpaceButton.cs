@@ -39,6 +39,10 @@ public class GridSpaceButton : MonoBehaviour
         {
             case TileType.Damage:
                 Debug.Log($"{side} Damage tile activated!");
+                if(side == _gameController.GetPlayerSide())
+                    _gameController._enemyHealth.TakeDamage(_tileProperty._attackTileDamage);
+                else
+                    _gameController._playerHealth.TakeDamage(_tileProperty._attackTileDamage);
                 break;
             case TileType.Shield:
                 Debug.Log($"{side} Shield tile activated!");
