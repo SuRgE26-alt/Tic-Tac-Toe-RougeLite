@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3dd8311de861b2d438958c4523cbae02, type: 3}
-  m_Name: Damage TilesSO
-  m_EditorClassIdentifier: Assembly-CSharp::TilesSO
-  _tileType: 0
+  m_Script: {fileID: 11500000, guid: 757fca622034f114aa0dd61b0c401f2a, type: 3}
+  m_Name: NormalEnemyData
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyDataSO
+  _lookaheadDepth: 2
+  _mistackeChance: 0.2
