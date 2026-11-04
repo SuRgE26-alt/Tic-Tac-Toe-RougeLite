@@ -1,16 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 public class EnemyAi : MonoBehaviour
 {
     private GameController _gameController;
     [SerializeField] private EnemyDataSO _enemyData;
-
-    //[Header("Difficulty Settings")]
-    //[SerializeField, Range(1, 9)] private int _lookaheadDepth = 2;
-    //[SerializeField, Range(0, 1)] private float _mistackeChance = 0.3f;
-    
 
     public void MakeMove()
     {
@@ -25,19 +21,18 @@ public class EnemyAi : MonoBehaviour
 
         int chosenCell;
 
-        if(Random.value < _enemyData._mistackeChance)
+        if(Random.value < _enemyData._mistakeChance)
         {
             chosenCell = freeCells[Random.Range(0, freeCells.Count)];
-            Debug.Log("AI made a stupid move..Lucky you!");
+            //Debug.Log("AI made a stupid move..Lucky you!");
         }
         else
         {
             chosenCell = PickBestCell(board, freeCells, aiSide, playerSide);
-            Debug.Log("AI made a smart move!");
+            //Debug.Log("AI made a smart move!");
         }
 
-        GridSpaceButton chosenSpace = _gameController._buttonList[chosenCell].GetComponentInParent<GridSpaceButton>();
-        chosenSpace.ClaimSpace(aiSide);
+        _gameController.ClaimCell(chosenCell, aiSide);
 
         //int value = Random.Range(0, _gameController._buttonList.Length);
         //var space = _gameController._buttonList[value].GetComponentInParent<GridSpaceButton>();
@@ -115,6 +110,18 @@ public class EnemyAi : MonoBehaviour
             if (board[i] == "") free.Add(i);
         }
         return free;
+    }
+
+    public bool TryCastpower()
+    {
+        if (_enemyData == null || !_enemyData._hasPowers) return false;
+        if (_enemyData._powerUps == null || _enemyData._powerUps.Length == 0) return false;
+
+        EnemyPowerSO power = _enemyData._powerUps[Random.Range(0, _enemyData._powerUps.Length)];
+        bool added = _gameController.AddBlock(power);
+
+        Debug.Log($"Enemy cast {power.name}: {(added ? "added" : "refused (nothing to cover, Or it would leave no playable cell)")}");
+        return added;
     }
 
     static bool HasWon(string[] board, string side)

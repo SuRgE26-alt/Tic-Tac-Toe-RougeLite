@@ -1,0 +1,348 @@
+fileFormatVersion: 2
+guid: 440fa0fbe1626f74fbba90c0ed6bd27b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3319338819442472883
+    second: noun_Shield_8483247_@700_0
+  - first:
+      213: -3441147054960700903
+    second: noun_Shield_8483247_@700_1
+  - first:
+      213: -9111229089192769356
+    second: noun_Shield_8483247_@700_2
+  - first:
+      213: 5853608364989707357
+    second: noun_Shield_8483247_@700_3
+  - first:
+      213: 8955208850785064755
+    second: noun_Shield_8483247_@700_4
+  - first:
+      213: -3578555693397991956
+    second: noun_Shield_8483247_@700_5
+  - first:
+      213: 6804632704598683447
+    second: noun_Shield_8483247_@700_6
+  - first:
+      213: -2744212091550415045
+    second: noun_Shield_8483247_@700_7
+  - first:
+      213: -3692501186484366354
+    second: noun_Shield_8483247_@700_8
+  - first:
+      213: 63679790762559653
+    second: noun_Shield_8483247_@700_9
+  - first:
+      213: -2350302367963697753
+    second: noun_Shield_8483247_@700_10
+  - first:
+      213: -4139465051916524707
+    second: noun_Shield_8483247_@700_11
+  - first:
+      213: -2142628482581202320
+    second: noun_Shield_8483247_@700_12
+  - first:
+      213: 8780473165012262508
+    second: noun_Shield_8483247_@700_13
+  - first:
+      213: -4246093568750320012
+    second: noun_Shield_8483247_@700_14
+  - first:
+      213: 2145137335533960048
+    second: noun_Shield_8483247_@700_15
+  - first:
+      213: -4569216384548483394
+    second: noun_Shield_8483247_@700_16
+  - first:
+      213: 806211212064901732
+    second: noun_Shield_8483247_@700_17
+  - first:
+      213: 833823709641699259
+    second: noun_Shield_8483247_@700_18
+  - first:
+      213: 2572092602596812616
+    second: noun_Shield_8483247_@700_19
+  - first:
+      213: 3879410420010996438
+    second: noun_Shield_8483247_@700_20
+  - first:
+      213: -4050180315856434383
+    second: noun_Shield_8483247_@700_21
+  - first:
+      213: -4286480830972948172
+    second: noun_Shield_8483247_@700_22
+  - first:
+      213: -6696430216884140714
+    second: noun_Shield_8483247_@700_23
+  - first:
+      213: -836342824133563702
+    second: noun_Shield_8483247_@700_24
+  - first:
+      213: -5842046934287493701
+    second: noun_Shield_8483247_@700_25
+  - first:
+      213: 6610020953845315681
+    second: noun_Shield_8483247_@700_26
+  - first:
+      213: -7949319140664508182
+    second: noun_Shield_8483247_@700_27
+  - first:
+      213: 6640071364624172150
+    second: noun_Shield_8483247_@700_28
+  - first:
+      213: -740673401773579328
+    second: noun_Shield_8483247_@700_29
+  - first:
+      213: -807401009745773755
+    second: noun_Shield_8483247_@700_30
+  - first:
+      213: 1562349773523747796
+    second: noun_Shield_8483247_@700_31
+  - first:
+      213: -1451213445874961387
+    second: noun_Shield_8483247_@700_32
+  - first:
+      213: 3889171663526047796
+    second: noun_Shield_8483247_@700_33
+  - first:
+      213: -6966035892607124516
+    second: noun_Shield_8483247_@700_34
+  - first:
+      213: 849466944781971976
+    second: noun_Shield_8483247_@700_35
+  - first:
+      213: 1321997169316436322
+    second: noun_Shield_8483247_@700_36
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: noun_Shield_8483247_@700_0
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 185
+        width: 552
+        height: 430
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4887f92ee65fe1d0800000000000000
+      internalID: -3319338819442472883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_Shield_8483247_@700_1
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 33
+        width: 288
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9129f294cf69e30d0800000000000000
+      internalID: -3441147054960700903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 6be2125ff8309fe48843f89dc5f1b480
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      noun_Shield_8483247_@700_0: -3319338819442472883
+      noun_Shield_8483247_@700_1: -3441147054960700903
+      noun_Shield_8483247_@700_10: -2350302367963697753
+      noun_Shield_8483247_@700_11: -4139465051916524707
+      noun_Shield_8483247_@700_12: -2142628482581202320
+      noun_Shield_8483247_@700_13: 8780473165012262508
+      noun_Shield_8483247_@700_14: -4246093568750320012
+      noun_Shield_8483247_@700_15: 2145137335533960048
+      noun_Shield_8483247_@700_16: -4569216384548483394
+      noun_Shield_8483247_@700_17: 806211212064901732
+      noun_Shield_8483247_@700_18: 833823709641699259
+      noun_Shield_8483247_@700_19: 2572092602596812616
+      noun_Shield_8483247_@700_2: -9111229089192769356
+      noun_Shield_8483247_@700_20: 3879410420010996438
+      noun_Shield_8483247_@700_21: -4050180315856434383
+      noun_Shield_8483247_@700_22: -4286480830972948172
+      noun_Shield_8483247_@700_23: -6696430216884140714
+      noun_Shield_8483247_@700_24: -836342824133563702
+      noun_Shield_8483247_@700_25: -5842046934287493701
+      noun_Shield_8483247_@700_26: 6610020953845315681
+      noun_Shield_8483247_@700_27: -7949319140664508182
+      noun_Shield_8483247_@700_28: 6640071364624172150
+      noun_Shield_8483247_@700_29: -740673401773579328
+      noun_Shield_8483247_@700_3: 5853608364989707357
+      noun_Shield_8483247_@700_30: -807401009745773755
+      noun_Shield_8483247_@700_31: 1562349773523747796
+      noun_Shield_8483247_@700_32: -1451213445874961387
+      noun_Shield_8483247_@700_33: 3889171663526047796
+      noun_Shield_8483247_@700_34: -6966035892607124516
+      noun_Shield_8483247_@700_35: 849466944781971976
+      noun_Shield_8483247_@700_36: 1321997169316436322
+      noun_Shield_8483247_@700_4: 8955208850785064755
+      noun_Shield_8483247_@700_5: -3578555693397991956
+      noun_Shield_8483247_@700_6: 6804632704598683447
+      noun_Shield_8483247_@700_7: -2744212091550415045
+      noun_Shield_8483247_@700_8: -3692501186484366354
+      noun_Shield_8483247_@700_9: 63679790762559653
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

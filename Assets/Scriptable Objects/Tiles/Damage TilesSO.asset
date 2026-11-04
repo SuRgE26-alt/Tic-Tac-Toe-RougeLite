@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TilesSO
   _tileType: 0
   _tileSprite: {fileID: 0}
-  _attackTileDamage: 10
+  _attackTileDamage: 1

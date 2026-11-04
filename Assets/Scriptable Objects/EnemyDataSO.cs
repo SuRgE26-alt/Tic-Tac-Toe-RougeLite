@@ -5,9 +5,10 @@ public class EnemyDataSO : ScriptableObject
 {
     [Header("Difficulty Settings")]
     [SerializeField, Range(1, 9)] public int _lookaheadDepth = 2;
-    [SerializeField, Range(0, 1)] public float _mistackeChance = 0.3f;
+    [SerializeField, Range(0, 1)] public float _mistakeChance = 0.3f;
 
     [Header("Enemy Powers")]
-    [SerializeField] private bool _hasPowers;
+    [SerializeField] public bool _hasPowers;
+    [SerializeField] public EnemyPowerSO[] _powerUps;
 
 }

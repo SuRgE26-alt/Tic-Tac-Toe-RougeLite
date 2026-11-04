@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 757fca622034f114aa0dd61b0c401f2a, type: 3}
   m_Name: NormalEnemyData
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDataSO
-  _lookaheadDepth: 2
-  _mistackeChance: 0.2
+  _lookaheadDepth: 3
+  _mistackeChance: 0.1
+  _hasPowers: 0
