@@ -4,12 +4,14 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class Player
 {
     public Image _panel;
     public TextMeshProUGUI _text;
+    public GameObject _multiplierImage;
     public Button _chooseSideButton;
 }
 
@@ -28,6 +30,8 @@ public enum BoardResult
     Draw
 }
 
+public enum EncounterResult { Won, Lost, Draw }
+
 public class GameController : MonoBehaviour
 {
 
@@ -35,12 +39,32 @@ public class GameController : MonoBehaviour
     [SerializeField] private EnemyAi _enemyAi;
     [SerializeField] private BoardsView _boardsView;
     [SerializeField] private SeamLineOverlay _seamLineOverlay;
+    [SerializeField] private GameObject _rewardPanel;
+    [SerializeField] private TextMeshProUGUI _coinChoiceText;
+    [SerializeField] private TextMeshProUGUI _healChoiceText;
+
+    [Header("Coin flip")]
+    [SerializeField] private GameObject _coinFlipPanel;
+    [SerializeField] private GameObject _coinXImage;
+    [SerializeField] private GameObject _coinOImage;
+    [SerializeField] private float _flipDuration = 1.5f;       // how long the shuffle lasts
+    [SerializeField] private float _flipStartInterval = 0.07f; // starting swap speed, it slows down
+    [SerializeField] private float _flipResultHold = 1f;       // how long the result stays up
+
+    private bool _playerStartsFirst;
+
     [SerializeField] private float _aiThinkTime = 0.6f;
     [SerializeField] private float _castBeat = 0.5f;
+    [SerializeField] private string _shopSceneName = "Shop";
+    [SerializeField] private string _mapSceneName = "Map";
 
     [SerializeField] private float _finalMoveBeat = 0.6f;
     [SerializeField] private float _seamRevealDelay = 0.5f;
     [SerializeField] private float _overviewHold = 2f;
+    [SerializeField] private float _lineMultiplier = 2f;
+
+    private float _playerMultiplier = 1f;
+    private float _enemyMultiplier = 1f;
 
     private TextMeshProUGUI[] _allCells = new TextMeshProUGUI[81];
     private BoardResult[] _results = new BoardResult[9];
@@ -48,6 +72,7 @@ public class GameController : MonoBehaviour
 
     public TextMeshProUGUI[] _buttonList;
     public GameObject _resultPanel;
+    public GameObject _deathPanel;
     public TextMeshProUGUI _resultText;
     public GameObject _startInfo;
     public EnemyHealth _enemyHealth;
@@ -57,20 +82,26 @@ public class GameController : MonoBehaviour
     private string _aiSide;
     private bool _gameOver;
     private bool _lastMoverWasPlayer;
+    private bool _rewardPending;
+    private bool _playerMultiplierActive;
+    private bool _enemyMultiplierActive;
     private int _moveCount;
     private int _activeIndex;
 
     public bool _playerMove;
     public bool IsGameOver => _gameOver;
 
-    public Player _playerX;
-    public Player _playerO;
+    public Player _playerPanel;
+    public Player _enemyPanel;
     public PlayerColor _activePlayerColor;
     public PlayerColor _inactivePlayerColor;
+
+    private EncounterResult _lastResult;
 
     public event System.Action<int, BoardResult> OnBoardFinished;
     public event System.Action<string, int[]> OnSeamLineMade;
     public event System.Action OnEncounterOver;
+    public event System.Action<EncounterResult> OnEncounterResult;
     public event System.Action<Block> OnPlayerBlocked;
 
     public static readonly int[][] WinPatterns =
@@ -89,6 +120,7 @@ public class GameController : MonoBehaviour
     private void Awake()
     {
         _resultPanel.SetActive(false);
+        _coinFlipPanel.SetActive(false);
         SetGameControllerRef();
         SetPlayerColorsInactive();
         _boardsView.SnapToOverview();
@@ -96,6 +128,10 @@ public class GameController : MonoBehaviour
         LockAllBoards();
         _startInfo.SetActive(true);
         _playerMove = true;
+        _rewardPending = false;
+        _rewardPanel.SetActive(false);
+        _playerPanel._text.text = "";
+        _enemyPanel._text.text = "";
     }
 
     private IEnumerator AiTurnCoroutine()
@@ -131,18 +167,25 @@ public class GameController : MonoBehaviour
 
         _aiSide = (_playerSide == "X") ? "O" : "X"; // For when I forget how this works : in bracets is the if and then if true the first one will run else the second one will
 
-        StartGame();
+        _playerPanel._text.text = _playerSide;
+        _enemyPanel._text.text = _aiSide;
+
+        _startInfo.SetActive(false);
+        StartCoroutine(CoinFlipRoutine());
     }
 
     void StartGame()
     {
         _gameOver = false;
         _activeIndex = 0;
-        _playerMove = true;
+        _playerMove = _playerStartsFirst;
 
         _playerHealth.ResetDefense();
         _enemyHealth.ResetDefense();
-        SetPlayerSideButtons(false);
+        ResetMultipliers();
+
+        if (RelicManager.Instance != null) RelicManager.Instance.OnEncounterStart(_playerHealth);
+
         _startInfo.SetActive(false);
         StartCoroutine(BeginBoardCoroutine());
     }
@@ -151,9 +194,12 @@ public class GameController : MonoBehaviour
     {
         yield return _boardsView.ZoomToBoard(_activeIndex);
         yield return CastPowerCoroutine();
+        RelicBoardStart(_playerMove);
 
-        HightlightCurrentTurn();
+        HighlightCurrentTurn();
         _boards[_activeIndex].Unlock();
+
+        if (!_playerMove) StartCoroutine(AiTurnCoroutine());
     }
 
     public string GetPlayerSide()
@@ -168,6 +214,8 @@ public class GameController : MonoBehaviour
 
     public void EndTurn()
     {
+        if(CheckHealthEnd()) return;
+
         _lastMoverWasPlayer = _playerMove;
 
         if(_playerMove) TickBlocks();
@@ -186,105 +234,44 @@ public class GameController : MonoBehaviour
             ChangeSides();
         }
 
-        #region Old Win Check Code (Commented Out)
-
-        //#region Horitzontal Wins
-
-        //if (_buttonList[0].text == _playerSide && _buttonList[1].text == _playerSide && _buttonList[2].text == _playerSide)
-        //{
-        //    GameOver(_playerSide);
-        //}
-        //else if (_buttonList[3].text == _playerSide && _buttonList[4].text == _playerSide && _buttonList[5].text == _playerSide)
-        //{
-        //    GameOver(_playerSide);
-        //}
-        //else if (_buttonList[6].text == _playerSide && _buttonList[7].text == _playerSide && _buttonList[8].text == _playerSide)
-        //{
-        //    GameOver(_playerSide);
-        //}
-
-        //#endregion
-
-        //#region Vertical Wins
-
-        //else if (_buttonList[0].text == _playerSide && _buttonList[3].text == _playerSide && _buttonList[6].text == _playerSide)
-        //{
-        //    GameOver(_playerSide);
-        //}
-        //else if (_buttonList[1].text == _playerSide && _buttonList[4].text == _playerSide && _buttonList[7].text == _playerSide)
-        //{
-        //    GameOver(_playerSide);
-        //}
-        //else if (_buttonList[2].text == _playerSide && _buttonList[5].text == _playerSide && _buttonList[8].text == _playerSide)
-        //{
-        //    GameOver(_playerSide);
-        //}
-
-        //#endregion
-
-        //#region Diagonal Wins
-
-        //else if (_buttonList[0].text == _playerSide && _buttonList[4].text == _playerSide && _buttonList[8].text == _playerSide)
-        //{
-        //    GameOver(_playerSide);
-        //}
-        //else if (_buttonList[2].text == _playerSide && _buttonList[4].text == _playerSide && _buttonList[6].text == _playerSide)
-        //{
-        //    GameOver(_playerSide);
-        //}
-
-        //#endregion
-
-        //#region Horitzontal Wins Computer
-
-        //else if (_buttonList[0].text == _computerSide && _buttonList[1].text == _computerSide && _buttonList[2].text == _computerSide)
-        //{
-        //    GameOver(_computerSide);
-        //}
-        //else if (_buttonList[3].text == _computerSide && _buttonList[4].text == _computerSide && _buttonList[5].text == _computerSide)
-        //{
-        //    GameOver(_computerSide);
-        //}
-        //else if (_buttonList[6].text == _computerSide && _buttonList[7].text == _computerSide && _buttonList[8].text == _computerSide)
-        //{
-        //    GameOver(_computerSide);
-        //}
-
-        //#endregion
-
-        //#region Vertical Wins Computer
-
-        //else if (_buttonList[0].text == _computerSide && _buttonList[3].text == _computerSide && _buttonList[6].text == _computerSide)
-        //{
-        //    GameOver(_computerSide);
-        //}
-        //else if (_buttonList[1].text == _computerSide && _buttonList[4].text == _computerSide && _buttonList[7].text == _computerSide)
-        //{
-        //    GameOver(_computerSide);
-        //}
-        //else if (_buttonList[2].text == _computerSide && _buttonList[5].text == _computerSide && _buttonList[8].text == _computerSide)
-        //{
-        //    GameOver(_computerSide);
-        //}
-
-        //#endregion
-
-        //#region Diagonal Wins Computer
-
-        //else if (_buttonList[0].text == _computerSide && _buttonList[4].text == _computerSide && _buttonList[8].text == _computerSide)
-        //{
-        //    GameOver(_computerSide);
-        //}
-        //else if (_buttonList[2].text == _computerSide && _buttonList[4].text == _computerSide && _buttonList[6].text == _computerSide)
-        //{
-        //    GameOver(_computerSide);
-        //}
-
-        //#endregion
-
-        #endregion
-
     }
+
+    #region Coin Flip
+
+    IEnumerator CoinFlipRoutine()
+    {
+        _coinFlipPanel.SetActive(true);
+
+        string landed = Random.value < 0.5f ? "X" : "O";    // decided up front
+        bool showX = Random.value < 0.5f;
+        float elapsed = 0f;
+        float interval = _flipStartInterval;
+
+        while (elapsed < _flipDuration)
+        {
+            ShowCoinFace(showX);
+            showX = !showX;
+
+            yield return new WaitForSeconds(interval);
+            elapsed += interval;
+            interval *= 1.12f;                               // each swap is a bit slower
+        }
+
+        ShowCoinFace(landed == "X");
+        yield return new WaitForSeconds(_flipResultHold);
+
+        _coinFlipPanel.SetActive(false);
+        _playerStartsFirst = (landed == _playerSide);
+        StartGame();
+    }
+
+    void ShowCoinFace(bool showX)
+    {
+        _coinXImage.SetActive(showX);
+        _coinOImage.SetActive(!showX);
+    } 
+
+    #endregion
 
     void FinishBoard(bool playerWon, bool aiWon)
     {
@@ -292,13 +279,18 @@ public class GameController : MonoBehaviour
             : aiWon ? BoardResult.EnemyWon 
             : BoardResult.Draw;
 
+        if (playerWon) GrantMultiplier(true);
+        else if (aiWon) GrantMultiplier(false);
+
         int finishedIndex = _activeIndex;
 
         _results[finishedIndex] = result;
         _boards[finishedIndex].Lock();
         ClearBlocks();
-        Debug.Log($"Board {finishedIndex + 1} finished: {result}");
+        //Debug.Log($"Board {finishedIndex + 1} finished: {result}");
         OnBoardFinished?.Invoke(finishedIndex, result);
+
+        if(CheckHealthEnd()) return;
 
         List<int[]> seamLines = ScoreSeamLines(finishedIndex);
         StartCoroutine(BoardTransitionCoroutine(finishedIndex, seamLines));
@@ -307,14 +299,17 @@ public class GameController : MonoBehaviour
     List<int[]> ScoreSeamLines(int finishedBoard)
     {
         List<int[]> found = new List<int[]>();
+        HashSet<string> sidesWithLine = new HashSet<string>();
+
         foreach (int[] line in BoardLines.SeamLinesByLastBoard[finishedBoard])
         {
             string owner = _allCells[line[0]].text;
-            if ((owner == "")) continue;
+            if (owner == "" || sidesWithLine.Contains(owner)) continue;
 
             if (_allCells[line[1]].text == owner && _allCells[line[2]].text == owner)
             {
                 found.Add(line);
+                sidesWithLine.Add(owner);
             }
         }
 
@@ -332,8 +327,10 @@ public class GameController : MonoBehaviour
         {
             string owner = _allCells[line[0]].text;
             yield return _seamLineOverlay.Reveal(owner, new[] { _allCells[line[0]], _allCells[line[1]], _allCells[line[2]] });
-            Debug.Log($"{owner} made a seam line: {line[0]}, {line[1]}, {line[2]}");
+            //Debug.Log($"{owner} made a seam line: {line[0]}, {line[1]}, {line[2]}");
             OnSeamLineMade?.Invoke(owner, line);
+            GrantMultiplier(owner == _playerSide);
+            if (CheckHealthEnd()) yield break;
             yield return new WaitForSeconds(_seamRevealDelay);
         }
 
@@ -354,7 +351,8 @@ public class GameController : MonoBehaviour
     void StartNextBoard()
     {
         _playerMove = !_lastMoverWasPlayer;
-        HightlightCurrentTurn();
+        RelicBoardStart(_playerMove);
+        HighlightCurrentTurn();
 
         if (!_playerMove)
         {
@@ -416,7 +414,7 @@ public class GameController : MonoBehaviour
     void ChangeSides()
     {
         _playerMove = !_playerMove;
-        HightlightCurrentTurn();
+        HighlightCurrentTurn();
 
         if (_playerMove)
         {
@@ -432,9 +430,33 @@ public class GameController : MonoBehaviour
 
     void EncounterOver()
     {
+        if (_gameOver) return;
+
+        StopAllCoroutines();
         _gameOver = true;
         LockAllBoards();
+        ClearBlocks();
         SetPlayerColorsInactive();
+
+        EncounterResult result = GetEncounterResult();
+
+        _lastResult = result;
+        if (result == EncounterResult.Lost)
+        {
+            _deathPanel.SetActive(true);
+            PlayerProgress.Clear();
+            Map.MapManager.ClearSavedMap();
+        }
+
+        if (result == EncounterResult.Won)
+        {
+            _rewardPending = true;
+            _coinChoiceText.text = $"{_enemyAi.CoinReward} coins";
+            _healChoiceText.text = $"{_enemyAi.HealReward} HP";
+            _rewardPanel.SetActive(true);
+        }
+
+        string title = result == EncounterResult.Won ? "You Won!" : result == EncounterResult.Lost ? "You Lost!" : "It's a Draw!";
 
         int player = 0, enemy = 0, draws = 0;
         foreach(BoardResult r in _results)
@@ -444,8 +466,35 @@ public class GameController : MonoBehaviour
             else if(r == BoardResult.Draw) draws++;
         }
 
-        SetResultText($"Encounter Over!\n You: {player} Enemy: {enemy} Draws: {draws}");
+        string summary = $"{title}\nYou: {_playerHealth.CurrentHealth} HP \nEnemy: {_enemyHealth.CurrentHealth} HP";
+        SetResultText(summary);
+        OnEncounterResult?.Invoke(result);
         OnEncounterOver?.Invoke();
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
+
+    EncounterResult GetEncounterResult()
+    {
+        float player = _playerHealth.CurrentHealth;
+        float enemy = _enemyHealth.CurrentHealth;
+
+        if (enemy < player) return EncounterResult.Won;     // lower health loses
+        if (player < enemy) return EncounterResult.Lost;
+        return EncounterResult.Draw;                         // a tie is a draw
+    }
+
+    // Returns true if the encounter just ended (or already had).
+    bool CheckHealthEnd()
+    {
+        if (_gameOver) return true;
+        if (_playerHealth.CurrentHealth > 0 && _enemyHealth.CurrentHealth > 0) return false;
+
+        EncounterOver();
+        return true;
     }
 
     public void SetResultText(string value)
@@ -457,8 +506,12 @@ public class GameController : MonoBehaviour
     public void RestartGame()
     {
         StopAllCoroutines();
+        _coinFlipPanel.SetActive(false);
+        _deathPanel.SetActive(false);
         _boardsView.SnapToOverview();
         _seamLineOverlay.Clear();
+        if (_lastResult == EncounterResult.Lost) _playerHealth.ResetHealth();
+        _enemyHealth.ResetHealth();
 
         _gameOver = false;
         _activeIndex = 0;
@@ -476,14 +529,41 @@ public class GameController : MonoBehaviour
         }
 
         ClearBlocks();
+        ResetMultipliers();
 
         _resultPanel.SetActive(false);
         _startInfo.SetActive(true);
 
-        SetPlayerSideButtons(true);
         SetPlayerColorsInactive();
 
         _playerMove = true;
+        _rewardPending = false;
+        _rewardPanel.SetActive(false);
+        _playerPanel._text.text = "";
+        _enemyPanel._text.text = "";
+    }
+
+    public void ToMap()
+    {
+        SceneManager.LoadScene(_mapSceneName);
+    }
+
+    public void ChooseCoins()
+    {
+        if (!_rewardPending) return;
+        _rewardPending = false;
+
+        if (CoinManager.Instance != null) CoinManager.Instance.AddCoins(_enemyAi.CoinReward);
+        _rewardPanel.SetActive(false);
+    }
+
+    public void ChooseHeal()
+    {
+        if (!_rewardPending) return;
+        _rewardPending = false;
+
+        _playerHealth.Heal(_enemyAi.HealReward);
+        _rewardPanel.SetActive(false);
     }
 
     void SetupBoards()
@@ -506,7 +586,7 @@ public class GameController : MonoBehaviour
     {
         if(_boards.Length != 9)
         {
-            Debug.LogError($"GameController needs exactly 9 board, found only {_boards.Length}");
+            //Debug.LogError($"GameController needs exactly 9 board, found only {_boards.Length}");
             return;
         }
 
@@ -522,13 +602,13 @@ public class GameController : MonoBehaviour
     {
         if (_blocks.Count == 0) return;
 
-        Debug.Log($"Tick: {_blocks.Count} blocks before");
+        //Debug.Log($"Tick: {_blocks.Count} blocks before");
 
         foreach (Block b in _blocks) b._movesLeft--;
         _blocks.RemoveAll(b => b._movesLeft <= 0);
         RefreshBoard();
 
-        Debug.Log($"Tick: {_blocks.Count} blocks before");
+        //Debug.Log($"Tick: {_blocks.Count} blocks before");
     }
 
     bool BlockCovers(Block block, int cell)                  // only empty cells are ever covered
@@ -581,6 +661,12 @@ public class GameController : MonoBehaviour
         return found;
     }
 
+    void RelicBoardStart(bool playerMovesFirst)
+    {
+        if (RelicManager.Instance != null)
+            RelicManager.Instance.OnBoardStart(playerMovesFirst, _playerHealth);
+    }
+
     public bool AddBlock(BlockTarget target, BlockMode mode, int cellCount, TileType tileType, int duration)
     {
         TicTacToeBoard board = _boards[_activeIndex];
@@ -609,7 +695,7 @@ public class GameController : MonoBehaviour
             if (BlockCovers(block, i)) coversSomething = true;
         if (!coversSomething) return false;                 // nothing to block, skip the cast
 
-        Debug.Log($"AddBlock {target}/{mode}, {duration} moves. Blocks before: {_blocks.Count}");
+        //Debug.Log($"AddBlock {target}/{mode}, {duration} moves. Blocks before: {_blocks.Count}");
 
         _blocks.Add(block);
         if (mode == BlockMode.Lock && !PlayerHasPlayableCell())   // safety rule
@@ -628,12 +714,66 @@ public class GameController : MonoBehaviour
         return AddBlock(power._target, power._mode, power._cellCount, power._tileType, power._duration);
     }
 
-    void HightlightCurrentTurn()
-    {
-        string sideToMove = _playerMove ? _playerSide : _aiSide;
+    #region Multiplier Effects
 
-        if (sideToMove == "X") SetPlayerColors(_playerX, _playerO);
-        else SetPlayerColors(_playerO, _playerX);
+    void GrantMultiplier(bool toPlayer)
+    {
+        if (toPlayer)
+        {
+            _playerMultiplier = _lineMultiplier;
+            _playerMultiplierActive = true;
+        }
+        else
+        {
+            _enemyMultiplier = _lineMultiplier;
+            _enemyMultiplierActive = true;
+        }
+
+        UpdateMultiplierUI();
+    }
+
+    public float ConsumeMultiplier(string side)
+    {
+        bool isPlayer = (side == _playerSide);
+        bool active = isPlayer ? _playerMultiplierActive : _enemyMultiplierActive;
+        float value = active ? (isPlayer ? _playerMultiplier : _enemyMultiplier) : 1f;
+
+        if (isPlayer) _playerMultiplierActive = false;
+        else _enemyMultiplierActive = false;
+
+        UpdateMultiplierUI();
+        return value;
+    }
+
+    void ResetMultipliers()
+    {
+        _playerMultiplierActive = false;
+        _enemyMultiplierActive = false;
+        UpdateMultiplierUI();
+    }
+
+    void UpdateMultiplierUI()
+    {
+        ShowMultiplier(_playerPanel, _playerMultiplierActive, _playerMultiplier);
+        ShowMultiplier(_enemyPanel, _enemyMultiplierActive, _enemyMultiplier);
+    }
+
+    void ShowMultiplier(Player panel, bool active, float value)
+    {
+        if (panel._multiplierImage != null) panel._multiplierImage.SetActive(active);
+    }
+
+    #endregion
+
+    public void OpenShop()
+    {
+        SceneManager.LoadScene(_shopSceneName);
+    }
+
+    void HighlightCurrentTurn()
+    {
+        if (_playerMove) SetPlayerColors(_playerPanel, _enemyPanel);
+        else SetPlayerColors(_enemyPanel, _playerPanel);
     }
 
     void SetBoardInteractable(bool toggle)
@@ -644,11 +784,6 @@ public class GameController : MonoBehaviour
         }
     }
 
-    void SetPlayerSideButtons(bool toggle)
-    {
-        _playerX._chooseSideButton.interactable = toggle;
-        _playerO._chooseSideButton.interactable = toggle;
-    }
 
     void LockAllBoards()
     {
@@ -660,9 +795,9 @@ public class GameController : MonoBehaviour
 
     void SetPlayerColorsInactive()
     {
-        _playerX._panel.color = _inactivePlayerColor._panelColor;
-        _playerX._text.color = _inactivePlayerColor._textColor;
-        _playerO._panel.color = _inactivePlayerColor._panelColor;
-        _playerO._text.color = _inactivePlayerColor._textColor;
+        _playerPanel._panel.color = _inactivePlayerColor._panelColor;
+        _playerPanel._text.color = _inactivePlayerColor._textColor;
+        _enemyPanel._panel.color = _inactivePlayerColor._panelColor;
+        _enemyPanel._text.color = _inactivePlayerColor._textColor;
     }
 }

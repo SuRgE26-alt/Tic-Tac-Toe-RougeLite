@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Hard Enemy
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDataSO
   _lookaheadDepth: 6
-  _mistakeChance: 0.3
+  _mistakeChance: 0.2
   _hasPowers: 1
   _powerUps:
   - {fileID: 11400000, guid: 2aae59b3ca3d7b24f91485938b7635b6, type: 2}
+  _coinReward: 20
+  _healReward: 30

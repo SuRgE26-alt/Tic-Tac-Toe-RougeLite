@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Heal TileSO
   m_EditorClassIdentifier: Assembly-CSharp::TilesSO
   _tileType: 2
-  _tileSprite: {fileID: 0}
+  _tileSprite: {fileID: 3413224983464383262, guid: 9046348c28ac2c049bfdb1f00b1b3cbe, type: 3}
+  _attackTileDamage: 0

@@ -8,6 +8,9 @@ public class EnemyAi : MonoBehaviour
     private GameController _gameController;
     [SerializeField] private EnemyDataSO _enemyData;
 
+    public int CoinReward => _enemyData != null ? _enemyData._coinReward : 0;
+    public int HealReward => _enemyData != null ? _enemyData._healReward : 0;
+
     public void MakeMove()
     {
         if (_gameController.IsGameOver) return;

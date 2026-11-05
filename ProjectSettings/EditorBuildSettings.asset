@@ -6,8 +6,20 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/TicTacToeTest.unity
+    path: Assets/Scenes/Main Menu.unity
+    guid: fd1a1fe9c9945b542a1e69644dd839d0
+  - enabled: 1
+    path: Assets/Scenes/NormalEnemy.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/EliteEnemy.unity
+    guid: e6c7e6d3c3681284bb01ae83a6acd637
+  - enabled: 1
+    path: Assets/Scenes/BossEnemy.unity
+    guid: 776bfbaa2c6f991439dde9e7e778a5b5
+  - enabled: 1
+    path: Assets/Scenes/ShopScene.unity
+    guid: 072683889f5dc624fa8af2e2423e986c
   - enabled: 1
     path: Assets/MapProgressionSystem/Scenes/Map.unity
     guid: e516ca0ff1429484db6d8343c7f09cdf

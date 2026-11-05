@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Shield TileSO
   m_EditorClassIdentifier: Assembly-CSharp::TilesSO
   _tileType: 1
-  _tileSprite: {fileID: 0}
+  _tileSprite: {fileID: -3319338819442472883, guid: 440fa0fbe1626f74fbba90c0ed6bd27b, type: 3}
+  _attackTileDamage: 0

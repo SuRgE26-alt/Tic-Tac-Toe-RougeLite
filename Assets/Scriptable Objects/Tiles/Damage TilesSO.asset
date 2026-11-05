@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Damage TilesSO
   m_EditorClassIdentifier: Assembly-CSharp::TilesSO
   _tileType: 0
-  _tileSprite: {fileID: 0}
-  _attackTileDamage: 1
+  _tileSprite: {fileID: 4597041398039627563, guid: 90955415c7938a14ba397003528cc888, type: 3}
+  _attackTileDamage: 10

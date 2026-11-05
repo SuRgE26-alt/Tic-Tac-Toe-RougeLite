@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class GridSpaceButton : MonoBehaviour
 {
     [SerializeField] private Button _button;
+    [SerializeField] private Image _tileImage;
     [SerializeField] private TextMeshProUGUI _buttonText;
     [SerializeField] private TilesSO _tileProperty;
 
@@ -20,6 +21,12 @@ public class GridSpaceButton : MonoBehaviour
     public TileType CurrentTile => _tileProperty._tileType;
 
     public bool _isFree => _button.interactable;
+
+    private void Awake()
+    {
+        if(_tileImage != null && _tileProperty != null)
+            _tileImage.sprite = _tileProperty._tileSprite;
+    }
 
     void CheckAIInput()
     {
@@ -78,20 +85,30 @@ public class GridSpaceButton : MonoBehaviour
 
     void ActivteTile(string side)
     {
+        float multiplier = (_tileProperty._tileType == TileType.None) ? 1f : _gameController.ConsumeMultiplier(side);
+
         switch (_tileProperty._tileType)
         {
             case TileType.Damage:
-                //Debug.Log($"{side} Damage tile activated!");
+                Debug.Log($"{side} Damage tile activated!");
                 if(side == _gameController.GetPlayerSide())
-                    _gameController._enemyHealth.TakeDamage(_tileProperty._attackTileDamage);
+                    _gameController._enemyHealth.TakeDamage(_tileProperty._attackTileDamage * multiplier);
                 else
-                    _gameController._playerHealth.TakeDamage(_tileProperty._attackTileDamage);
+                    _gameController._playerHealth.TakeDamage(_tileProperty._attackTileDamage * multiplier);
                 break;
             case TileType.Shield:
-                //Debug.Log($"{side} Shield tile activated!");
+                Debug.Log($"{side} Shield tile activated!");
+                if (side == _gameController.GetPlayerSide())
+                    _gameController._enemyHealth.AddDefense(_tileProperty._attackTileDamage * multiplier);
+                else
+                    _gameController._playerHealth.AddDefense(_tileProperty._attackTileDamage * multiplier);
                 break;
             case TileType.Heal:
-                //Debug.Log($"{side} Heal tile activated!");
+                Debug.Log($"{side} Heal tile activated!");
+                if (side == _gameController.GetPlayerSide())
+                    _gameController._enemyHealth.Heal(_tileProperty._attackTileDamage * multiplier);
+                else
+                    _gameController._playerHealth.Heal(_tileProperty._attackTileDamage * multiplier);
                 break;
             case TileType.None:
                 //Debug.Log($"{side} No special effect.");

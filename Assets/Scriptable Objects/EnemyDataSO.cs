@@ -11,4 +11,8 @@ public class EnemyDataSO : ScriptableObject
     [SerializeField] public bool _hasPowers;
     [SerializeField] public EnemyPowerSO[] _powerUps;
 
+    [Header("Rewards")]
+    [SerializeField, Min(0)] public int _coinReward = 10;
+    [SerializeField, Min(0)] public int _healReward = 15;
+
 }

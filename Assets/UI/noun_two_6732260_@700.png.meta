@@ -1,0 +1,320 @@
+fileFormatVersion: 2
+guid: 79e21e6fb92a6e149b5bb10733bdfa04
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6063481865695480530
+    second: noun_two_6732260_@700_0
+  - first:
+      213: 5960118099050603720
+    second: noun_two_6732260_@700_1
+  - first:
+      213: 2255052996325992050
+    second: noun_two_6732260_@700_2
+  - first:
+      213: 1380683528988078797
+    second: noun_two_6732260_@700_3
+  - first:
+      213: -8579096125856864375
+    second: noun_two_6732260_@700_4
+  - first:
+      213: -6996356306472979114
+    second: noun_two_6732260_@700_5
+  - first:
+      213: -8305516013175892221
+    second: noun_two_6732260_@700_6
+  - first:
+      213: -2731842343796853740
+    second: noun_two_6732260_@700_7
+  - first:
+      213: 4944967233157188594
+    second: noun_two_6732260_@700_8
+  - first:
+      213: -8780421272144995023
+    second: noun_two_6732260_@700_9
+  - first:
+      213: -6152889389836454748
+    second: noun_two_6732260_@700_10
+  - first:
+      213: 9120267858967322119
+    second: noun_two_6732260_@700_11
+  - first:
+      213: -4598983262948780567
+    second: noun_two_6732260_@700_12
+  - first:
+      213: 4005664256660312385
+    second: noun_two_6732260_@700_13
+  - first:
+      213: 8312992664034900671
+    second: noun_two_6732260_@700_14
+  - first:
+      213: -3673453612460007897
+    second: noun_two_6732260_@700_15
+  - first:
+      213: -4542383866088209220
+    second: noun_two_6732260_@700_16
+  - first:
+      213: 4173307079204217472
+    second: noun_two_6732260_@700_17
+  - first:
+      213: -935613192311394261
+    second: noun_two_6732260_@700_18
+  - first:
+      213: -8033920642503484131
+    second: noun_two_6732260_@700_19
+  - first:
+      213: -3326983219011242894
+    second: noun_two_6732260_@700_20
+  - first:
+      213: -5218046145451089477
+    second: noun_two_6732260_@700_21
+  - first:
+      213: -8451157614832529648
+    second: noun_two_6732260_@700_22
+  - first:
+      213: 4387036231968357004
+    second: noun_two_6732260_@700_23
+  - first:
+      213: -3317527598404714805
+    second: noun_two_6732260_@700_24
+  - first:
+      213: 1829489615498590340
+    second: noun_two_6732260_@700_25
+  - first:
+      213: 2702246740089430308
+    second: noun_two_6732260_@700_26
+  - first:
+      213: 1375985899160366554
+    second: noun_two_6732260_@700_27
+  - first:
+      213: -7098216117092578186
+    second: noun_two_6732260_@700_28
+  - first:
+      213: -5757654521876874415
+    second: noun_two_6732260_@700_29
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: noun_two_6732260_@700_0
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 168
+        width: 208
+        height: 468
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2da4dc291a0d52450800000000000000
+      internalID: 6063481865695480530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_two_6732260_@700_1
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 32
+        width: 260
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c4a94145d796b250800000000000000
+      internalID: 5960118099050603720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 09000423a40a86c4c852c3390556de65
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      noun_two_6732260_@700_0: 6063481865695480530
+      noun_two_6732260_@700_1: 5960118099050603720
+      noun_two_6732260_@700_10: -6152889389836454748
+      noun_two_6732260_@700_11: 9120267858967322119
+      noun_two_6732260_@700_12: -4598983262948780567
+      noun_two_6732260_@700_13: 4005664256660312385
+      noun_two_6732260_@700_14: 8312992664034900671
+      noun_two_6732260_@700_15: -3673453612460007897
+      noun_two_6732260_@700_16: -4542383866088209220
+      noun_two_6732260_@700_17: 4173307079204217472
+      noun_two_6732260_@700_18: -935613192311394261
+      noun_two_6732260_@700_19: -8033920642503484131
+      noun_two_6732260_@700_2: 2255052996325992050
+      noun_two_6732260_@700_20: -3326983219011242894
+      noun_two_6732260_@700_21: -5218046145451089477
+      noun_two_6732260_@700_22: -8451157614832529648
+      noun_two_6732260_@700_23: 4387036231968357004
+      noun_two_6732260_@700_24: -3317527598404714805
+      noun_two_6732260_@700_25: 1829489615498590340
+      noun_two_6732260_@700_26: 2702246740089430308
+      noun_two_6732260_@700_27: 1375985899160366554
+      noun_two_6732260_@700_28: -7098216117092578186
+      noun_two_6732260_@700_29: -5757654521876874415
+      noun_two_6732260_@700_3: 1380683528988078797
+      noun_two_6732260_@700_4: -8579096125856864375
+      noun_two_6732260_@700_5: -6996356306472979114
+      noun_two_6732260_@700_6: -8305516013175892221
+      noun_two_6732260_@700_7: -2731842343796853740
+      noun_two_6732260_@700_8: 4944967233157188594
+      noun_two_6732260_@700_9: -8780421272144995023
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

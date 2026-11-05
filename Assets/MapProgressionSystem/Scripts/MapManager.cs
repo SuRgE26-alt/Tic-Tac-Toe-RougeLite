@@ -54,6 +54,12 @@ namespace Map
             PlayerPrefs.Save();
         }
 
+        public static void ClearSavedMap()
+        {
+            PlayerPrefs.DeleteKey("Map");
+            PlayerPrefs.Save();
+        }
+
         private void OnApplicationQuit()
         {
             SaveMap();

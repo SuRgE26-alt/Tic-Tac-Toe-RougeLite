@@ -1,0 +1,348 @@
+fileFormatVersion: 2
+guid: 90955415c7938a14ba397003528cc888
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4597041398039627563
+    second: noun_Sword_7954632_@700_0
+  - first:
+      213: -1849267357277869544
+    second: noun_Sword_7954632_@700_1
+  - first:
+      213: -655788030273384664
+    second: noun_Sword_7954632_@700_2
+  - first:
+      213: -4124413109190677125
+    second: noun_Sword_7954632_@700_3
+  - first:
+      213: -5057210385327960548
+    second: noun_Sword_7954632_@700_4
+  - first:
+      213: -5458316135296772745
+    second: noun_Sword_7954632_@700_5
+  - first:
+      213: -6129176471651972861
+    second: noun_Sword_7954632_@700_6
+  - first:
+      213: 5647516998732973232
+    second: noun_Sword_7954632_@700_7
+  - first:
+      213: 4855388682396547865
+    second: noun_Sword_7954632_@700_8
+  - first:
+      213: 3117820524143365713
+    second: noun_Sword_7954632_@700_9
+  - first:
+      213: -5906787861855931242
+    second: noun_Sword_7954632_@700_10
+  - first:
+      213: 6923841658578345144
+    second: noun_Sword_7954632_@700_11
+  - first:
+      213: 5774923327683733284
+    second: noun_Sword_7954632_@700_12
+  - first:
+      213: -1408655860589371983
+    second: noun_Sword_7954632_@700_13
+  - first:
+      213: -8127061919666326346
+    second: noun_Sword_7954632_@700_14
+  - first:
+      213: -3660896158205952214
+    second: noun_Sword_7954632_@700_15
+  - first:
+      213: -2841685018873080609
+    second: noun_Sword_7954632_@700_16
+  - first:
+      213: 1166774394316806492
+    second: noun_Sword_7954632_@700_17
+  - first:
+      213: 7236299518169368064
+    second: noun_Sword_7954632_@700_18
+  - first:
+      213: -8202725733714285397
+    second: noun_Sword_7954632_@700_19
+  - first:
+      213: -2011088510957634927
+    second: noun_Sword_7954632_@700_20
+  - first:
+      213: 4149378789232396313
+    second: noun_Sword_7954632_@700_21
+  - first:
+      213: 6787662196250824031
+    second: noun_Sword_7954632_@700_22
+  - first:
+      213: -5439355319121815161
+    second: noun_Sword_7954632_@700_23
+  - first:
+      213: -5559169642606853964
+    second: noun_Sword_7954632_@700_24
+  - first:
+      213: -7823720858577926237
+    second: noun_Sword_7954632_@700_25
+  - first:
+      213: -7100736122902369021
+    second: noun_Sword_7954632_@700_26
+  - first:
+      213: -3490721771421728159
+    second: noun_Sword_7954632_@700_27
+  - first:
+      213: -786600363306160128
+    second: noun_Sword_7954632_@700_28
+  - first:
+      213: -4175918218127130387
+    second: noun_Sword_7954632_@700_29
+  - first:
+      213: -5138396603668475155
+    second: noun_Sword_7954632_@700_30
+  - first:
+      213: 856720858919764977
+    second: noun_Sword_7954632_@700_31
+  - first:
+      213: 83966163966118465
+    second: noun_Sword_7954632_@700_32
+  - first:
+      213: 2587025878578170654
+    second: noun_Sword_7954632_@700_33
+  - first:
+      213: 7692957587925745825
+    second: noun_Sword_7954632_@700_34
+  - first:
+      213: -2211801061211927203
+    second: noun_Sword_7954632_@700_35
+  - first:
+      213: -5484687961424478018
+    second: noun_Sword_7954632_@700_36
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: noun_Sword_7954632_@700_0
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 107
+        width: 561
+        height: 584
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b27caeb9bc8fbcf30800000000000000
+      internalID: 4597041398039627563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_Sword_7954632_@700_1
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 32
+        width: 359
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81a2abae2251656e0800000000000000
+      internalID: -1849267357277869544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 1ebb3eaa44fc16449893d78de09c0d3e
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      noun_Sword_7954632_@700_0: 4597041398039627563
+      noun_Sword_7954632_@700_1: -1849267357277869544
+      noun_Sword_7954632_@700_10: -5906787861855931242
+      noun_Sword_7954632_@700_11: 6923841658578345144
+      noun_Sword_7954632_@700_12: 5774923327683733284
+      noun_Sword_7954632_@700_13: -1408655860589371983
+      noun_Sword_7954632_@700_14: -8127061919666326346
+      noun_Sword_7954632_@700_15: -3660896158205952214
+      noun_Sword_7954632_@700_16: -2841685018873080609
+      noun_Sword_7954632_@700_17: 1166774394316806492
+      noun_Sword_7954632_@700_18: 7236299518169368064
+      noun_Sword_7954632_@700_19: -8202725733714285397
+      noun_Sword_7954632_@700_2: -655788030273384664
+      noun_Sword_7954632_@700_20: -2011088510957634927
+      noun_Sword_7954632_@700_21: 4149378789232396313
+      noun_Sword_7954632_@700_22: 6787662196250824031
+      noun_Sword_7954632_@700_23: -5439355319121815161
+      noun_Sword_7954632_@700_24: -5559169642606853964
+      noun_Sword_7954632_@700_25: -7823720858577926237
+      noun_Sword_7954632_@700_26: -7100736122902369021
+      noun_Sword_7954632_@700_27: -3490721771421728159
+      noun_Sword_7954632_@700_28: -786600363306160128
+      noun_Sword_7954632_@700_29: -4175918218127130387
+      noun_Sword_7954632_@700_3: -4124413109190677125
+      noun_Sword_7954632_@700_30: -5138396603668475155
+      noun_Sword_7954632_@700_31: 856720858919764977
+      noun_Sword_7954632_@700_32: 83966163966118465
+      noun_Sword_7954632_@700_33: 2587025878578170654
+      noun_Sword_7954632_@700_34: 7692957587925745825
+      noun_Sword_7954632_@700_35: -2211801061211927203
+      noun_Sword_7954632_@700_36: -5484687961424478018
+      noun_Sword_7954632_@700_4: -5057210385327960548
+      noun_Sword_7954632_@700_5: -5458316135296772745
+      noun_Sword_7954632_@700_6: -6129176471651972861
+      noun_Sword_7954632_@700_7: 5647516998732973232
+      noun_Sword_7954632_@700_8: 4855388682396547865
+      noun_Sword_7954632_@700_9: 3117820524143365713
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
